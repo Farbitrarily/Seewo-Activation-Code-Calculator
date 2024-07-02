@@ -31,6 +31,7 @@
 }
 
 .main .create {
+    display   : none;
     text-align: center;
 }
 
@@ -61,7 +62,6 @@
 }
 
 .main .reader {
-    display   : none;
     text-align: center;
     font-size : 16px;
 }

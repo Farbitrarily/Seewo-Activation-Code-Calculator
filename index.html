@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
     <meta charset="UTF-8">
@@ -10,10 +10,20 @@
     <script src="./js/crypto-js.min.js"></script>
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFG0P2TLV1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DFG0P2TLV1');
+</script>
+
 <body>
     <menu class="menu" id="menu">
-        <nav class="active">二维码生成</nav> |
-        <nav>二维码解密</nav>
+        <nav>二维码生成</nav> |
+        <nav class="active">二维码解密</nav>
     </menu>
 
     <h1 class="h1">纯 JS ：希沃激活码计算器</h1>
@@ -21,33 +31,34 @@
 
     <main class="main">
         <aside class="create">
-            <input type="text" id="deviceid" placeholder="请在这里输入ID！" />
+            <input type="text" id="deviceid" placeholder="请在这里输入设备ID！" />
             <input type="button" value="生成Url" onclick="create()" />
             <div id="url"></div>
             <input type="text" id="code" placeholder="将url复制到此处以生成二维码！" />
             <input type="button" value="生成二维码" onclick="create0()" />
             <div class="qrcode" id="qrcode"></div>
+            <a href="https://github.com/Farbitrarily/Seewo-Activation-Code-Calculator">View in Github</a> | <a href="https://blog.fabbo.top">联系作者</a>
+            <br><br>
         </aside>
         <aside class="reader">
             <button class="sweep" onclick="sweep()">扫一扫</button>
             <button class="sweep">
                 <input type="file" id="file" onchange="upload()" />从相册选择
             </button>
+            <button class="sweep" onclick="decryptActivationCode()">解密</button><br>
+            <h1 id="Activator"></h1>
+
             <div class="imgurl">
                 <img id="imgurl"
                     alt="当前识别的二维码" />
             </div>
-            <textarea class="result" id="result" cols="32" rows="6" placeholder="二维码识别结果！"></textarea>
+            <textarea class="result" id="result" cols="34" rows="6" placeholder="二维码识别结果！"></textarea>
             <br>
-            <button class="sweep" onclick="autofill()">自动填充</button><br>
-            <label for="urlInput">输入二维码识别结果:</label>
-            <input type="text" id="urlInput"><br>
-            <label for="deviceIdInput">deviceId值_自动获取:</label>
-            <input type="text" id="deviceIdInput"><br>
-            <button class="sweep" onclick="decryptActivationCode()">解密</button><br>
-            <p id="result0"></p>
-
+            <label for="deviceIdInput">DeviceID_自动获取:</label>
+            <input type="text" id="deviceIdInput"><br><br>
+            <a href="https://github.com/Farbitrarily/Seewo-Activation-Code-Calculator">View in Github</a> | <a href="https://blog.fabbo.top">联系作者</a>
             <canvas class="canvas" id="canvas"></canvas>
+            <br><br>
         </aside>
     </main>
 
@@ -91,6 +102,7 @@
             seuccess: function (res) {
                 // 识别成功反馈
                 result.value = res.data;
+                //autofill()
             }
         });
 
@@ -114,6 +126,7 @@
         menu.forEach((nav, n) => {
             nav.onclick = () => {
                 aside.forEach((ele, a) => {
+                    console.log(a);
                     ele.style.display = 'none';
                     menu[a].classList.remove('active');
                 });

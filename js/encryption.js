@@ -64,13 +64,13 @@ function md5(str) {
     return params;
   }
 
-  function autofill(){
-    const url = document.getElementById("result").value;
-    document.getElementById("urlInput").value = url;
-  }
+  // function autofill(){
+  //   const url = document.getElementById("result").value;
+  //   document.getElementById("urlInput").value = url;
+  // }
 
   function decryptActivationCode() {
-    const url = document.getElementById("urlInput").value;
+    const url = document.getElementById("result").value;
 
     const urlParams = parseUrl(url);
 
@@ -80,5 +80,5 @@ function md5(str) {
     const ciphertextKey = md5(urlParams["_k"] + deviceId);
     const decryptedPassword = re.a.decrypt(urlParams["_p"], ciphertextKey);
 
-    document.getElementById("result0").innerText = "激活码: " + decryptedPassword;
+    document.getElementById("Activator").innerText = "激活码: " + decryptedPassword;
   }
