@@ -43,11 +43,11 @@
         </aside>
         <aside class="reader">
             <br>
-            <button class="sweep" onclick="sweep()">扫一扫</button>
+            <button class="sweep" onclick="sweep()">扫码</button>
             <button class="sweep">
-                <input type="file" id="file" onchange="upload()" />从相册选择
+                <input type="file" id="file" onchange="upload()" />选择图片
             </button>
-            <button class="sweep" onclick="decryptActivationCode()">解密</button><br>
+            <button class="sweep" onclick="decryptActivationCode()">解密！</button><br>
             <h1 id="Activator"></h1>
             <br>
             <textarea class="result" id="result" cols="34" rows="6" placeholder="二维码识别结果！"></textarea>
@@ -56,6 +56,7 @@
             <input type="text" id="deviceIdInput">
             <div class="imgurl">
                 <img id="imgurl"
+                    src="./seewo.png"
                     alt="当前识别的二维码" />
             </div>
             <a href="https://github.com/Farbitrarily/Seewo-Activation-Code-Calculator">View in Github</a> | <a href="https://blog.fabbo.top">联系作者</a>

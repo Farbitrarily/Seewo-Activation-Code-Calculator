@@ -66,10 +66,10 @@
                             this.seuccess(obj);
                         }
                     } else {
-                        this.error("未载入预设二维码");
+                        this.error("预设图像载入失败");
                     }
                 } catch (err) {
-                    this.error("识别失败，请检查二维码是否正确！", err);
+                    this.error("识别失败，请检查二维码", err);
                 };
             };
             if (this.isAnimation) {
