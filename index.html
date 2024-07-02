@@ -48,15 +48,15 @@
             </button>
             <button class="sweep" onclick="decryptActivationCode()">解密</button><br>
             <h1 id="Activator"></h1>
-
+            <br>
+            <textarea class="result" id="result" cols="34" rows="6" placeholder="二维码识别结果！"></textarea>
+            <br>
+            <label for="deviceIdInput">DeviceID_自动获取:</label>
+            <input type="text" id="deviceIdInput">
             <div class="imgurl">
                 <img id="imgurl"
                     alt="当前识别的二维码" />
             </div>
-            <textarea class="result" id="result" cols="34" rows="6" placeholder="二维码识别结果！"></textarea>
-            <br>
-            <label for="deviceIdInput">DeviceID_自动获取:</label>
-            <input type="text" id="deviceIdInput"><br><br>
             <a href="https://github.com/Farbitrarily/Seewo-Activation-Code-Calculator">View in Github</a> | <a href="https://blog.fabbo.top">联系作者</a>
             <br><br><h2>个人维护，随时跑路</h2>
             <canvas class="canvas" id="canvas"></canvas>
