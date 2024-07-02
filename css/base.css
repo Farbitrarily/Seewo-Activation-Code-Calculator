@@ -37,7 +37,7 @@
 
 .main .create input {
     position : relative;
-    margin   : 20px 0;
+    margin   : 8px auto;
     padding  : 12px;
     width    : 300px;
     font-size: 18px;
@@ -68,7 +68,7 @@
 
 .main .reader .sweep {
     position  : relative;
-    margin    : 20px;
+    margin    : 5px;
     padding   : 12px;
     width     : 300px;
     font-size : 18px;

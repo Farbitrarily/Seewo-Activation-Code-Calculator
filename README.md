@@ -1,5 +1,5 @@
 # Seewo-Activation-Code-Calculator
-希沃激活码计算器，从二维码到激活码一键解锁电子白板。本地运行，无需联网。  
+希沃激活码计算器，从二维码到激活码一键解锁电子白板。基于js，本地运行，无需联网。  
 
 [立即使用](https://seewo.fabbo.top/)
 

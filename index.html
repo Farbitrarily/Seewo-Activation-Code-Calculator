@@ -26,11 +26,12 @@
         <nav class="active">二维码解密</nav>
     </menu>
 
-    <h1 class="h1">纯 JS ：希沃激活码计算器</h1>
+    <h1 class="h1">希沃激活码计算器</h1>
     <hr />
 
     <main class="main">
         <aside class="create">
+            <br>
             <input type="text" id="deviceid" placeholder="请在这里输入设备ID！" />
             <input type="button" value="生成Url" onclick="create()" />
             <div id="url"></div>
@@ -42,6 +43,7 @@
             <br><br>
         </aside>
         <aside class="reader">
+            <br>
             <button class="sweep" onclick="sweep()">扫一扫</button>
             <button class="sweep">
                 <input type="file" id="file" onchange="upload()" />从相册选择
