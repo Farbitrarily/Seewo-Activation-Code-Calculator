@@ -7,5 +7,7 @@
 代码引用：  
 ```
 https://github.com/zhy8388608/Seewo_Assistant_Password_Recovery_Tool_V2
-QRCode scanner 部分代码的作者我暂时没找到。
+```
+```
+QRCode scanner
 ```
