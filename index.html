@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>希沃激活码计算器</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <script src="./js/crypto-js.min.js"></script>
+</head>
+
+<body>
+    <menu class="menu" id="menu">
+        <nav class="active">二维码生成</nav> |
+        <nav>二维码解密</nav>
+    </menu>
+
+    <h1 class="h1">纯 JS ：希沃激活码计算器</h1>
+    <hr />
+
+    <main class="main">
+        <aside class="create">
+            <input type="text" id="deviceid" placeholder="请在这里输入ID！" />
+            <input type="button" value="生成Url" onclick="create()" />
+            <div id="url"></div>
+            <input type="text" id="code" placeholder="将url复制到此处以生成二维码！" />
+            <input type="button" value="生成二维码" onclick="create0()" />
+            <div class="qrcode" id="qrcode"></div>
+        </aside>
+        <aside class="reader">
+            <button class="sweep" onclick="sweep()">扫一扫</button>
+            <button class="sweep">
+                <input type="file" id="file" onchange="upload()" />从相册选择
+            </button>
+            <div class="imgurl">
+                <img id="imgurl"
+                    alt="当前识别的二维码" />
+            </div>
+            <textarea class="result" id="result" cols="32" rows="6" placeholder="二维码识别结果！"></textarea>
+            <br>
+            <button class="sweep" onclick="autofill()">自动填充</button><br>
+            <label for="urlInput">输入二维码识别结果:</label>
+            <input type="text" id="urlInput"><br>
+            <label for="deviceIdInput">deviceId值_自动获取:</label>
+            <input type="text" id="deviceIdInput"><br>
+            <button class="sweep" onclick="decryptActivationCode()">解密</button><br>
+            <p id="result0"></p>
+
+            <canvas class="canvas" id="canvas"></canvas>
+        </aside>
+    </main>
+
+    <!-- 二维码生成 -->
+    <script src="./js/qrcode.js"></script>
+    <script src="./js/encryption.js"></script>
+    <script>
+        const text = document.querySelector('#code');
+        const qrcode = new QRCode(document.querySelector('#qrcode'), {
+            text: "请先输入内容！",
+            width: 300,
+            height: 300,
+            colorDark: "black",
+            colorLight: "white",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // 生成
+        function create() {
+            generateQRCode();
+        };
+        function create0() {
+            qrcode.clear();
+            qrcode.makeCode(text.value);
+        }
+    </script>
+
+    <!-- 二维码识别 -->
+    <script src="./js/jimp.js"></script>
+    <script src="./js/jsqr.min.js"></script>
+    <script src="./js/base.js"></script>
+    <script>
+        const result = document.querySelector('#result');
+        const QrCode = new QrCodeRecognition({
+            sweepId: '#canvas',
+            uploadId: '#file',
+            error: function (err) {
+                // 识别错误反馈
+                result.value = err;
+            },
+            seuccess: function (res) {
+                // 识别成功反馈
+                result.value = res.data;
+            }
+        });
+
+        // 扫一扫
+        function sweep() {
+            result.value = '';
+            QrCode.sweep();
+        };
+
+        // 从相册选择
+        function upload() {
+            result.value = '';
+            QrCode.upload();
+        };
+    </script>
+
+    <!-- Demo页面交互 -->
+    <script>
+        const menu = [...document.querySelectorAll('nav')];
+        const aside = [...document.querySelectorAll('aside')];
+        menu.forEach((nav, n) => {
+            nav.onclick = () => {
+                aside.forEach((ele, a) => {
+                    ele.style.display = 'none';
+                    menu[a].classList.remove('active');
+                });
+                menu[n].classList.add('active');
+                aside[n].style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>
